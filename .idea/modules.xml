@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-=======
       <module fileurl="file://$PROJECT_DIR$/.idea/mobile-interface.github.io.iml" filepath="$PROJECT_DIR$/.idea/mobile-interface.github.io.iml" />
->>>>>>> 2ad93b0a72ee584605882f34e663a2a6ad16d21f
     </modules>
   </component>
 </project>
