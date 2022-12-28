@@ -4,28 +4,28 @@ var data_template = [
   {
     id: "intro",
     name: "intro",
-    video: "movies/1.Enter-Hello.mp4",
+    video: "movies/5.Mobile-Hand.mp4",
   },
   {
     id: "department",
     name: "Department Info",
-    video: "movies/1.Enter-Hello.mp4",
+    video: "movies/5.Mobile-Hand.mp4",
   },
   {
     id: "staff",
     name: "Members of Staff",
-    video: "movies/2.Enter-Who.mp4",
+    video: "movies/5.Mobile-Hand.mp4,
 
     subMenu: [
       {
         id: "arne",
         name: "Arne Jönsson",
-        video: "movies/3.Enter-Arne.mp4",
+        video: "movies/5.Mobile-Hand.mp4",
         subMenu: [
           {
             id: "mobileGuide",
             name: "mobileGuide",
-            video: "movies/4.Enter-Transfer_Mobile.mp4",
+            video: "movies/5.Mobile-Hand.mp4",
           },
         ]
       },
@@ -37,27 +37,27 @@ var data_template = [
       {
         id: "tom",
         name: "Tom Ziemke",
-        video: "movies/0.Not_Available.mp4",
+        video: "movies/5.Mobile-Hand.mp4",
       },
       {
         id: "christoper",
         name: "Christoper Kessler",
-        video: "movies/0.Not_Available.mp4",
+        video: "movies/5.Mobile-Hand.mp4",
       },
       {
         id: "fredrik",
         name: "Fredrik Lindsten",
-        video: "movies/0.Not_Available.mp4",
+        video: "movies/5.Mobile-Hand.mp4",
       },
       {
         id: "marco",
         name: "Marco Kuhlmann",
-        video: "movies/0.Not_Available.mp4",
+        video: "movies/5.Mobile-Hand.mp4",
       },
       {
         id: "stefan",
         name: "Stefan Holmlid",
-        video: "movies/0.Not_Available.mp4",
+        video: "movies/5.Mobile-Hand.mp4",
       },
     ],
   },
@@ -65,60 +65,60 @@ var data_template = [
   {
     id: "meeting",
     name: "Meeting Rooms",
-    video: "movies/1.Enter-Hello.mp4",
+    video: "movies/5.Mobile-Hand.mp4",
     subMenu: [
       {
         id: "home",
         name: "Home",
-        video: "movies/1.Enter-Hello.mp4",
+        video: "movies/5.Mobile-Hand.mp4",
       },
     ],
   },
   {
     id: "research",
     name: "Research at HCS",
-    video: "movies/1.Enter-Hello.mp4",
+    video: "movies/5.Mobile-Hand.mp4",
     subMenu: [
       {
         id: "home",
         name: "Home",
-        video: "movies/1.Enter-Hello.mp4",
+        video: "movies/5.Mobile-Hand.mp4",
       },
     ],
   },
   {
     id: "campus",
     name: "About the Campus",
-    video: "movies/1.Enter-Hello.mp4",
+    video: "movies/5.Mobile-Hand.mp4",
     subMenu: [
       {
         id: "home",
         name: "Home",
-        video: "movies/1.Enter-Hello.mp4",
+        video: "movies/5.Mobile-Hand.mp4",
       },
     ],
   },
   {
     id: "liu",
     name: "Linköping University",
-    video: "movies/1.Enter-Hello.mp4",
+    video: "movies/5.Mobile-Hand.mp4",
     subMenu: [
       {
         id: "linkoping",
         name: "linkoping",
-        video: "movies/1.Enter-Hello.mp4",
+        video: "movies/5.Mobile-Hand.mp4",
       },
     ],
   },
   {
     id: "other",
     name: "other",
-    video: "movies/1.Enter-Hello.mp4",
+    video: "movies/5.Mobile-Hand.mp4",
     subMenu: [
       {
         id: "Home",
         name: "Home",
-        video: "movies/1.Enter-Hello.mp4",
+        video: "movies/5.Mobile-Hand.mp4",
       },
     ],
   },
