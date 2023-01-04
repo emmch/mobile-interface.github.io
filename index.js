@@ -1,126 +1,40 @@
 //import "./styles.css";
 
 var data_template = [
-  {
+{
     id: "intro",
-    name: "intro",
+    //name: "intro",
     video: "movies/5.Mobile-Hand.mp4",
   },
   {
-    id: "department",
-    name: "Department Info",
-    video: "movies/5.Mobile-Hand.mp4",
-  },
-  {
-    id: "staff",
-    name: "Members of Staff",
-    video: "movies/5.Mobile-Hand.mp4,
-
+    id: "directions",
+    name: "Directions",
+    video: "movies/6.Mobile-directions_Meeting.mp4",
     subMenu: [
-      {
-        id: "arne",
-        name: "Arne Jönsson",
-        video: "movies/5.Mobile-Hand.mp4",
-        subMenu: [
+           {
+               id: "meeting",
+               name: "Meeting",
+               video: "movies/7.Mobile-Meeting.mp4",
+           },
           {
-            id: "mobileGuide",
-            name: "mobileGuide",
-            video: "movies/5.Mobile-Hand.mp4",
-          },
-        ]
-      },
-      {
-        id: "patrick",
-        name: "Patrick Doherty",
-        video: "movies/0.Not_Available.mp4",
-      },
-      {
-        id: "tom",
-        name: "Tom Ziemke",
-        video: "movies/5.Mobile-Hand.mp4",
-      },
-      {
-        id: "christoper",
-        name: "Christoper Kessler",
-        video: "movies/5.Mobile-Hand.mp4",
-      },
-      {
-        id: "fredrik",
-        name: "Fredrik Lindsten",
-        video: "movies/5.Mobile-Hand.mp4",
-      },
-      {
-        id: "marco",
-        name: "Marco Kuhlmann",
-        video: "movies/5.Mobile-Hand.mp4",
-      },
-      {
-        id: "stefan",
-        name: "Stefan Holmlid",
-        video: "movies/5.Mobile-Hand.mp4",
-      },
-    ],
-  },
+            id: "wait",
+            name: "Waiting",
+            video: "movies/8.Mobile-Wait_Fika.mp4",
+            subMenu: [
+              {
+                id: "no",
+                 name: "No",
+                 video: "movies/9.Mobile-transfer_fika.mp4",
+              },
+              {
+               id: "yes",
+               name: "Yes",
+               video: "movies/9b.Mobile-come_back.mp4",
 
-  {
-    id: "meeting",
-    name: "Meeting Rooms",
-    video: "movies/5.Mobile-Hand.mp4",
-    subMenu: [
-      {
-        id: "home",
-        name: "Home",
-        video: "movies/5.Mobile-Hand.mp4",
-      },
-    ],
-  },
-  {
-    id: "research",
-    name: "Research at HCS",
-    video: "movies/5.Mobile-Hand.mp4",
-    subMenu: [
-      {
-        id: "home",
-        name: "Home",
-        video: "movies/5.Mobile-Hand.mp4",
-      },
-    ],
-  },
-  {
-    id: "campus",
-    name: "About the Campus",
-    video: "movies/5.Mobile-Hand.mp4",
-    subMenu: [
-      {
-        id: "home",
-        name: "Home",
-        video: "movies/5.Mobile-Hand.mp4",
-      },
-    ],
-  },
-  {
-    id: "liu",
-    name: "Linköping University",
-    video: "movies/5.Mobile-Hand.mp4",
-    subMenu: [
-      {
-        id: "linkoping",
-        name: "linkoping",
-        video: "movies/5.Mobile-Hand.mp4",
-      },
-    ],
-  },
-  {
-    id: "other",
-    name: "other",
-    video: "movies/5.Mobile-Hand.mp4",
-    subMenu: [
-      {
-        id: "Home",
-        name: "Home",
-        video: "movies/5.Mobile-Hand.mp4",
-      },
-    ],
+              },
+            ]
+          },
+        ],
   },
 ];
 
@@ -160,7 +74,7 @@ function showPathMenu () {
     node.innerHTML = index !== activePathMenu.length-1 ? apm + " >" : apm;
     myNode.appendChild(node)
   });
-  
+
 }
 
 
