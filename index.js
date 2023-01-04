@@ -1,25 +1,15 @@
 //import "./styles.css";
 
 var data_template = [
-{
-    id: "intro",
-    //name: "intro",
-    video: "movies/5.Mobile-Hand.mp4",
-  },
   {
     id: "directions",
-    name: "Directions",
-    video: "movies/6.Mobile-directions_Meeting.mp4",
+    name: "Knock",
+    video: ["movies/6a.Mobile-directions.mp4","movies/6.Mobile-directions_Meeting.mp4"],
     subMenu: [
-           {
-               id: "meeting",
-               name: "Meeting",
-               video: "movies/7.Mobile-Meeting.mp4",
-           },
           {
             id: "wait",
             name: "Waiting",
-            video: "movies/8.Mobile-Wait_Fika.mp4",
+            video: ["movies/7.Mobile-Meeting.mp4","movies/9.Mobile-transfer_fika.mp4"],
             subMenu: [
               {
                 id: "no",
@@ -30,7 +20,6 @@ var data_template = [
                id: "yes",
                name: "Yes",
                video: "movies/9b.Mobile-come_back.mp4",
-
               },
             ]
           },
@@ -38,10 +27,10 @@ var data_template = [
   },
 ];
 
-let activeMenu = "intro";
+let activeMenu = "directions";
 
 // Could be a path array like this
-let activePathMenu = ["intro"];
+let activePathMenu = ["directions"];
 
 function clearMenu(ref) {
   const myNode = document.getElementById("menuContent");
@@ -77,11 +66,37 @@ function showPathMenu () {
 
 }
 
+function playNextVideo(videoLinks) {
+  // Check if there are more videos to play
+  if (videoLinks.length > 0) {
+    console.log('video links', videoLinks);
+    // Get the next video link
+    const nextVideoLink = videoLinks.shift();
+    console.log('next video link', videoLinks);
+    // Create a new video element
+    const video = document.getElementById("videoRefDOM");
+
+    // Set the video source and autoplay attributes
+    video.src = nextVideoLink;
+    video.autoplay = true;
+
+    // Append the video element to the container
+    // videoContainer.appendChild(video);
+
+    // Add an event listener to play the next video when the current one ends
+    video.addEventListener('ended', () => playNextVideo(videoLinks));
+  }
+}
 
 function loadVideo(videoLink) {
   // Set dom video
   console.log("src", videoLink);
-  document.getElementById("videoRefDOM").src = videoLink;
+  if(Array.isArray(videoLink)) {
+    console.log('Reach array status')
+    playNextVideo(videoLink)
+  } else {
+    document.getElementById("videoRefDOM").src = videoLink;
+  }
 }
 
 function application() {
@@ -92,13 +107,13 @@ function application() {
         activePathMenu.pop();
       }
 
-      activeMenu = "intro";
+      activeMenu = "directions";
       clearMenu();
       clearPathMenu();
       application();
     });
 
-  if (activeMenu !== "intro") {
+  if (activeMenu !== "directions") {
     if (activePathMenu > 1) {
       console.log("Not main menu");
       // activeMenu.forEach()
@@ -119,6 +134,12 @@ function application() {
         if (index.id === activeMenu) {
           // We found the node here! We update the DOM and break out of recursion!
           loadVideo(index.video);
+
+          // Do we have a qr code?
+          if (!!index.qrcode) {
+            document.getElementById("qrcanvas").style.display = "block";
+            index.qrcode();
+          }
           clearMenu();
           var divRef = document.getElementById("menuContent");
           if (index && index.subMenu) {
@@ -152,8 +173,9 @@ function application() {
 
     deepFind(data_template);
   } else {
-    loadVideo(data_template.find((i) => i.id === "intro").video);
+    loadVideo(data_template.find((i) => i.id === "directions").video);
     document.getElementById("goBack").style.display = "none";
+    document.getElementById("qrcanvas").style.display = "none";
   }
 
   function addItem(ref, buttonLabel, id) {
@@ -164,7 +186,7 @@ function application() {
       clearMenu();
       // if path array just push id to last item
       activeMenu = id;
-      if (id !== "intro") {
+      if (id !== "directions") {
         activePathMenu.push(id);
       }
 
@@ -180,8 +202,8 @@ function application() {
   function start() {
     // active state
     var divRef = document.getElementById("menuContent");
-    // if path menu check length 0 and intro
-    if (activeMenu === "intro") {
+    // if path menu check length 0 and directions
+    if (activeMenu === "directions") {
       data_template.forEach((item) => {
         addItem(divRef, item.name, item.id);
       });
