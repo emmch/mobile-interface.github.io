@@ -3,27 +3,28 @@
 var data_template = [
   {
     id: "directions",
-    name: "Knock",
+    name: "directions",
     video: ["movies/6a.Mobile-directions.mp4","movies/6.Mobile-directions_Meeting.mp4"],
     subMenu: [
-          {
-            id: "wait",
-            name: "Waiting",
-            video: ["movies/7.Mobile-Meeting.mp4","movies/9.Mobile-transfer_fika.mp4"],
-            subMenu: [
-              {
-                id: "no",
-                 name: "No",
-                 video: "movies/9.Mobile-transfer_fika.mp4",
-              },
-              {
-               id: "yes",
-               name: "Yes",
-               video: "movies/9b.Mobile-come_back.mp4",
-              },
-            ]
-          },
+      {
+        id: "knock",
+        name: "Knock",
+        video: ["movies/7.Mobile-Meeting.mp4","movies/8.Mobile-Wait_Fika.mp4"],
+        subMenu: [
+            {
+              id: "no",
+               name: "No",
+               video: "movies/9.Mobile-transfer_fika.mp4",
+            },
+            {
+             id: "yes",
+             name: "Yes",
+             video: "movies/9b.Mobile-come_back.mp4",
+            },
+
         ],
+      }
+     ],
   },
 ];
 
@@ -49,7 +50,7 @@ function showPathMenu () {
     var node = document.createElement("li");
     node.id = apm;
     node.addEventListener("click", function handleClick(e) {
-      console.log(e);
+      console.log("click detected: ", {e, activePathMenu});
       if (activePathMenu.length >= 2) {
         if(e.target.id !== activeMenu) {
         activePathMenu.pop();
@@ -93,7 +94,8 @@ function loadVideo(videoLink) {
   console.log("src", videoLink);
   if(Array.isArray(videoLink)) {
     console.log('Reach array status')
-    playNextVideo(videoLink)
+    const clonedVideos = [...videoLink];
+    playNextVideo(clonedVideos)
   } else {
     document.getElementById("videoRefDOM").src = videoLink;
   }
@@ -106,20 +108,20 @@ function application() {
       if (activePathMenu.length >= 2) {
         activePathMenu.pop();
       }
-
+      activePathMenu = ["directions"];
       activeMenu = "directions";
       clearMenu();
       clearPathMenu();
       application();
     });
 
-  if (activeMenu !== "directions") {
-    if (activePathMenu > 1) {
+    document.getElementById("goBack").style.display = "none";
+    console.log("activeMenu", {activeMenu, activePathMenu})
+  if (activeMenu) {
+    if (activePathMenu.length > 1) {
       console.log("Not main menu");
-      // activeMenu.forEach()
+      document.getElementById("goBack").style.display = "block";
     }
-
-    document.getElementById("goBack").style.display = "block";
 
     /*
     A recursive function that traverses data_template structure recursively until finding item;
@@ -134,12 +136,6 @@ function application() {
         if (index.id === activeMenu) {
           // We found the node here! We update the DOM and break out of recursion!
           loadVideo(index.video);
-
-          // Do we have a qr code?
-          if (!!index.qrcode) {
-            document.getElementById("qrcanvas").style.display = "block";
-            index.qrcode();
-          }
           clearMenu();
           var divRef = document.getElementById("menuContent");
           if (index && index.subMenu) {
@@ -175,7 +171,6 @@ function application() {
   } else {
     loadVideo(data_template.find((i) => i.id === "directions").video);
     document.getElementById("goBack").style.display = "none";
-    document.getElementById("qrcanvas").style.display = "none";
   }
 
   function addItem(ref, buttonLabel, id) {
@@ -183,6 +178,7 @@ function application() {
     button.textContent = buttonLabel;
     button.addEventListener("click", function handleClick() {
       // button.textContent = "Button clicked";
+      console.log('Clicked item', id)
       clearMenu();
       // if path array just push id to last item
       activeMenu = id;
@@ -195,7 +191,9 @@ function application() {
     });
 
     console.log(ref);
-    ref.appendChild(button);
+    if (id !== "directions") {
+      ref.appendChild(button);
+    }
   }
 
   // Imidiatly invoked function (called on start)
