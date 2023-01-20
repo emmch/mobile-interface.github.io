@@ -14,12 +14,12 @@ var data_template = [
             {
               id: "no",
                name: "No",
-               video: "movies/9.Mobile-transfer_fika.mp4",
+               video: "movies/9b.Mobile-come_back.mp4",
             },
             {
              id: "yes",
              name: "Yes",
-             video: "movies/9b.Mobile-come_back.mp4",
+             video: "movies/9.Mobile-transfer_fika.mp4",
             },
 
         ],
