@@ -19,7 +19,7 @@ var data_template = [
             {
              id: "yes",
              name: "Yes",
-             video: "movies/9.Mobile-transfer_fika.mp4",
+             video: ["movies/9.Mobile-transfer_fika.mp4","movies/10.Mobile-Move_to_robot.mp4"],
             },
 
         ],
